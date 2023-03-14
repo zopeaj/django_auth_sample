@@ -9,11 +9,11 @@ class AuthManager:
         self.bcryptPasswordConfiguration = bcryptPasswordConfiguration
         self.accountService = accountService
 
-    def authenticate(self, account):
+    def confirmUser(self, account):
         username = account.getUsername()
         account_user = self.accountService.getUserByName(username)
         if account_user.isAuthenticated():
-            return Response({"detail": "User already authenticated"}, status=status.HTTP_204_AUTHENTICATED)
+            return Response({"detail": "User already authenticated"}, status=status.HTTP_400_BAD_REQUEST)
         account_user.setAuthentication(account.getUsername() is not None)
         return account_user
 
