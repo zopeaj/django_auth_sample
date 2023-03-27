@@ -9,4 +9,4 @@ class AccountRepository:
             data = serializer.save()
         return data
 
-accountRepository = AccountRepository(Account)
+accountRepository = AccountRepository(Account())
